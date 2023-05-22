@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Templates{% endblock title %}</title>
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+    {% endblock head %}
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <h2>Templates</h2>
+            <div class="nav_links">
+                <a href="/home" id="home_link" class="nav_link">Home</a>
+                <a href="/about" id="about_link" class="nav_link">About</a>
+                <a href="/cats" id="one_link" class="nav_link">Cats</a>
+            </div>
+        </div>
+        <h1 class="page_head">{{self.title()}}</h1>
+        {% block main_content %}
+        {% block with_side_bar %}
+        <div class="side_main">
+            <div class="side">
+                {% block side_bar %}
+                    <h2>Base Side Bar</h2>
+                {% endblock side_bar %}
+            </div>
+            <div class="content">
+                {% block side_content %}
+                    
+                {% endblock side_content %}
+            </div>
+        </div>
+        {% endblock with_side_bar %}
+        {% endblock main_content %}
+
+    </div>
+</body>
+
+</html>
